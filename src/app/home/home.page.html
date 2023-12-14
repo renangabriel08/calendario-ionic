@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Calendário de Eventos
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="dataSelecionada" (ionChange)="alterarData()"></ion-datetime>
+
+  <br>
+
+  <ion-list *ngIf="detalhesEvento.length > 0">
+    <ion-item *ngFor="let event of detalhesEvento;">
+      <ion-label>Título: {{ event[0].title }}</ion-label>
+      <ion-label>Data: {{ event[0].date }}</ion-label>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
+
+<ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="abrirModal()">
+  <ion-fab-button>
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+
+
